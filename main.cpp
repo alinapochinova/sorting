@@ -1,15 +1,3 @@
-/**
- * Лабораторная работа №1
- * Вариант 21
- * 
- * Структура: Авиарейсы (номер рейса, авиакомпания, дата прилета, 
- *            время прилета, число пассажиров)
- * Сравнение по: дата -> время -> авиакомпания -> число пассажиров (по убыванию)
- * Алгоритмы: Bubble sort, Shaker sort, Quick sort + std::sort
- * 
- * Запуск: ./main.exe (предварительно сгенерировать данные через generate_data.exe)
- */
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,7 +10,6 @@
 using namespace std;
 using namespace chrono;
 
-// ==================== КЛАСС FLIGHT ====================
 
 class Flight {
 private:
@@ -88,8 +75,6 @@ public:
         return is;
     }
 };
-
-// ==================== АЛГОРИТМЫ СОРТИРОВКИ ====================
 
 template<typename T>
 void bubbleSort(vector<T>& arr) {
@@ -165,8 +150,6 @@ void quickSort(vector<T>& arr) {
     quickSortRecursive(arr, 0, arr.size() - 1);
 }
 
-// ==================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ====================
-
 template<typename T>
 bool isSorted(const vector<T>& arr) {
     for (size_t i = 1; i < arr.size(); i++) {
@@ -198,7 +181,7 @@ vector<Flight> loadFromCSV(const string& filename) {
 
 // Сохранение результата в файл
 void saveResultToFile(const vector<Flight>& arr, const string& filename, const string& sortName) {
-    ofstream file(filename, ios::app); // append mode
+    ofstream file(filename, ios::app);
     if (!file.is_open()) {
         cerr << "Ошибка: не удалось открыть файл " << filename << endl;
         return;
@@ -233,14 +216,9 @@ long long measureTime(vector<Flight> arr, SortFunc sortFunc,
     return duration;
 }
 
-// ==================== ГЛАВНАЯ ФУНКЦИЯ ====================
-
 int main() {
-    cout << "========================================" << endl;
-    cout << "Лабораторная работа. Вариант 21" << endl;
-    cout << "Сравнение алгоритмов сортировки" << endl;
-    cout << "========================================" << endl;
-    
+    system("mkdir sorted_results 2> nul");
+
     vector<size_t> sizes = {100, 500, 1000, 5000, 10000, 20000, 30000, 50000, 75000, 100000};
     
     // Открываем CSV для результатов замеров времени
@@ -262,12 +240,11 @@ int main() {
         cout << "Загружено " << original.size() << " записей" << endl;
         
         // Файл для сохранения результатов сортировки для этого размера
-        string resultFilename = "sorted_results_" + to_string(size) + ".txt";
+        string resultFilename = "sorted_results/sorted_results_" + to_string(size) + ".txt";
         
         // Очищаем файл результатов (создаем заново)
         ofstream clearFile(resultFilename);
         clearFile << "Результаты сортировки для размера " << size << "\n";
-        clearFile << "========================================\n\n";
         clearFile.close();
         
         // Создаем копии
@@ -301,12 +278,6 @@ int main() {
     }
     
     timingFile.close();
-    
-    cout << "\n========================================" << endl;
-    cout << "Готово!" << endl;
-    cout << "Результаты замеров: timing_results.csv" << endl;
-    cout << "Результаты сортировки: sorted_results_[размер].txt" << endl;
-    cout << "========================================" << endl;
-    
+       
     return 0;
 }
