@@ -1,0 +1,340 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$chrono$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_flight}{Flight}}
+\begin{DoxyCompactList}\small\item\em Класс, представляющий информацию об авиарейсе \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{main_8cpp_af5b2865c7f3a2f1c3fad7b2244234e72}{bubble\+Sort}} (vector$<$ T $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Сортировка пузырьком (Bubble sort). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{main_8cpp_a8e84937594274ed54e5814647f4a2120}{shaker\+Sort}} (vector$<$ T $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Шейкер-\/сортировка (Shaker sort) -\/ улучшенный вариант пузырька \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\int \doxymbox{\hyperlink{main_8cpp_a29fd290020732ac0864c4f157a29cca3}{partition}} (vector$<$ T $>$ \&arr, int low, int high)
+\begin{DoxyCompactList}\small\item\em Разбиение массива для быстрой сортировки \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{main_8cpp_a9dcb8e95346d7c0fec7a177f357ff123}{quick\+Sort\+Recursive}} (vector$<$ T $>$ \&arr, int low, int high)
+\begin{DoxyCompactList}\small\item\em Рекурсивная реализация быстрой сортировки \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{main_8cpp_ac96a86ae64c66b9973e38aee47538de4}{quick\+Sort}} (vector$<$ T $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Быстрая сортировка (Quick sort). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\bool \doxymbox{\hyperlink{main_8cpp_a700373c19d336a74b9072f2feb7b9725}{is\+Sorted}} (const vector$<$ T $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Проверка, отсортирован ли массив \end{DoxyCompactList}\item 
+vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$ \doxymbox{\hyperlink{main_8cpp_a84d88c5c6eb74d898078690799687b6e}{load\+From\+CSV}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Загрузка данных из CSV-\/файла \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a227514abd820354c1832ab7673a5104a}{save\+Result\+To\+File}} (const vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$ \&arr, const string \&filename, const string \&sort\+Name)
+\begin{DoxyCompactList}\small\item\em Сохранение отсортированного массива в файл \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Sort\+Func$>$ }\\long long \doxymbox{\hyperlink{main_8cpp_a46b4abe32f9265dd73503c17ab5e2718}{measure\+Time}} (vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$ arr, Sort\+Func sort\+Func, const string \&sort\+Name, const string \&result\+Filename)
+\begin{DoxyCompactList}\small\item\em Замер времени выполнения сортировки \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Главная функция программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_af5b2865c7f3a2f1c3fad7b2244234e72}\index{main.cpp@{main.cpp}!bubbleSort@{bubbleSort}}
+\index{bubbleSort@{bubbleSort}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{bubbleSort()}{bubbleSort()}}
+{\footnotesize\ttfamily \label{main_8cpp_af5b2865c7f3a2f1c3fad7b2244234e72} 
+template$<$typename T$>$ \\
+void bubble\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ \&}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Сортировка пузырьком (Bubble sort). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов массива (должен поддерживать operator\texorpdfstring{$>$}{>}) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Сортируемый массив (передаётся по ссылке)\\
+\hline
+\end{DoxyParams}
+Алгоритм последовательно проходит по массиву, сравнивая соседние элементы и меняя их местами, если они стоят в неправильном порядке.
+
+@complexity Время:\+ O(n²) в худшем и среднем случае @complexity Память:\+ O(1) дополнительной
+
+@stable Да (не меняет порядок равных элементов) @natural Да (работает быстрее на частично отсортированных данных)
+
+\begin{DoxyWarning}{Warning}
+На массивах размером \texorpdfstring{$>$}{>} 10000 работает очень медленно
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{main_8cpp_a8e84937594274ed54e5814647f4a2120}{shaker\+Sort} 
+
+\doxylink{main_8cpp_ac96a86ae64c66b9973e38aee47538de4}{quick\+Sort} 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_a700373c19d336a74b9072f2feb7b9725}\index{main.cpp@{main.cpp}!isSorted@{isSorted}}
+\index{isSorted@{isSorted}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isSorted()}{isSorted()}}
+{\footnotesize\ttfamily \label{main_8cpp_a700373c19d336a74b9072f2feb7b9725} 
+template$<$typename T$>$ \\
+bool is\+Sorted (\begin{DoxyParamCaption}\item[{const vector$<$ T $>$ \&}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Проверка, отсортирован ли массив 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Проверяемый массив \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если массив отсортирован по возрастанию
+\end{DoxyReturn}
+@complexity O(n) \Hypertarget{main_8cpp_a84d88c5c6eb74d898078690799687b6e}\index{main.cpp@{main.cpp}!loadFromCSV@{loadFromCSV}}
+\index{loadFromCSV@{loadFromCSV}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{loadFromCSV()}{loadFromCSV()}}
+{\footnotesize\ttfamily \label{main_8cpp_a84d88c5c6eb74d898078690799687b6e} 
+vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$ load\+From\+CSV (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Загрузка данных из CSV-\/файла 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Имя файла (путь) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Flight$>$ Загруженные объекты
+\end{DoxyReturn}
+Ожидает файл с заголовком:\+ "{}Номер рейса,Авиакомпания,Дата прилета,Время прилета,Число пассажиров"{}
+
+@error Если файл не открывается, возвращает пустой вектор
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{main_8cpp_a227514abd820354c1832ab7673a5104a}{save\+Result\+To\+File} 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Главная функция программы 
+
+\begin{DoxyReturn}{Returns}
+0 при успешном выполнении
+\end{DoxyReturn}
+Выполняет следующие шаги:\+
+\begin{DoxyEnumerate}
+\item Создаёт папку для результатов
+\item Для каждого размера массива (100..100000):\+ a. Загружает данные из CSV b. Запускает каждый алгоритм сортировки c. Замеряет время d. Сохраняет результаты
+\item Сохраняет сводную таблицу времени в timing\+\_\+results.\+csv
+\end{DoxyEnumerate}
+
+\begin{DoxyPrecond}{Precondition}
+Должны существовать файлы data/\+flights\+\_\+\{size\}.csv (генерируются generate\+\_\+data.\+exe) 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Создаются файлы:\+
+\begin{DoxyItemize}
+\item timing\+\_\+results.\+csv (сводная таблица)
+\item sorted\+\_\+results/\+sorted\+\_\+results\+\_\+\{size\}.txt (детальные результаты)
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{generate__data_8cpp}{generate\+\_\+data.\+cpp} 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_a46b4abe32f9265dd73503c17ab5e2718}\index{main.cpp@{main.cpp}!measureTime@{measureTime}}
+\index{measureTime@{measureTime}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{measureTime()}{measureTime()}}
+{\footnotesize\ttfamily \label{main_8cpp_a46b4abe32f9265dd73503c17ab5e2718} 
+template$<$typename Sort\+Func$>$ \\
+long long measure\+Time (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$}]{arr}{, }\item[{Sort\+Func}]{sort\+Func}{, }\item[{const string \&}]{sort\+Name}{, }\item[{const string \&}]{result\+Filename}{}\end{DoxyParamCaption})}
+
+
+
+Замер времени выполнения сортировки 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Sort\+Func} & Тип функции сортировки \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Массив для сортировки (копия) \\
+\hline
+{\em sort\+Func} & Функция сортировки \\
+\hline
+{\em sort\+Name} & Название алгоритма (для вывода) \\
+\hline
+{\em result\+Filename} & Имя файла для сохранения результата \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+long long Время выполнения в микросекундах
+\end{DoxyReturn}
+Создаёт копию массива, замеряет время выполнения сортировки, проверяет корректность и сохраняет результат в файл.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{main_8cpp_a700373c19d336a74b9072f2feb7b9725}{is\+Sorted} 
+
+\doxylink{main_8cpp_a227514abd820354c1832ab7673a5104a}{save\+Result\+To\+File} 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_a29fd290020732ac0864c4f157a29cca3}\index{main.cpp@{main.cpp}!partition@{partition}}
+\index{partition@{partition}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily \label{main_8cpp_a29fd290020732ac0864c4f157a29cca3} 
+template$<$typename T$>$ \\
+int partition (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ \&}]{arr}{, }\item[{int}]{low}{, }\item[{int}]{high}{}\end{DoxyParamCaption})}
+
+
+
+Разбиение массива для быстрой сортировки 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Массив \\
+\hline
+{\em low} & Левая граница \\
+\hline
+{\em high} & Правая граница \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Индекс опорного элемента после разбиения
+\end{DoxyReturn}
+Выбирает опорный элемент (медиану), переставляет элементы так, что все меньшие опорного оказываются слева, а большие — справа. \Hypertarget{main_8cpp_ac96a86ae64c66b9973e38aee47538de4}\index{main.cpp@{main.cpp}!quickSort@{quickSort}}
+\index{quickSort@{quickSort}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{quickSort()}{quickSort()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac96a86ae64c66b9973e38aee47538de4} 
+template$<$typename T$>$ \\
+void quick\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ \&}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Быстрая сортировка (Quick sort). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов массива \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Сортируемый массив\\
+\hline
+\end{DoxyParams}
+Реализует алгоритм "{}разделяй и властвуй"{}:\+
+\begin{DoxyEnumerate}
+\item Выбирает опорный элемент
+\item Разбивает массив на две части
+\item Рекурсивно сортирует каждую часть
+\end{DoxyEnumerate}
+
+@complexity Время:\+ O(n log n) в среднем, O(n²) в худшем @complexity Память:\+ O(log n) под стек рекурсии
+
+@stable Нет @natural Частично (зависит от выбора опорного элемента)
+
+\begin{DoxyWarning}{Warning}
+На почти отсортированных данных может деградировать до O(n²)
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+std::\+sort 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_a9dcb8e95346d7c0fec7a177f357ff123}\index{main.cpp@{main.cpp}!quickSortRecursive@{quickSortRecursive}}
+\index{quickSortRecursive@{quickSortRecursive}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{quickSortRecursive()}{quickSortRecursive()}}
+{\footnotesize\ttfamily \label{main_8cpp_a9dcb8e95346d7c0fec7a177f357ff123} 
+template$<$typename T$>$ \\
+void quick\+Sort\+Recursive (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ \&}]{arr}{, }\item[{int}]{low}{, }\item[{int}]{high}{}\end{DoxyParamCaption})}
+
+
+
+Рекурсивная реализация быстрой сортировки 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Массив \\
+\hline
+{\em low} & Левая граница \\
+\hline
+{\em high} & Правая граница\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{main_8cpp_ac96a86ae64c66b9973e38aee47538de4}{quick\+Sort} 
+\end{DoxySeeAlso}
+\Hypertarget{main_8cpp_a227514abd820354c1832ab7673a5104a}\index{main.cpp@{main.cpp}!saveResultToFile@{saveResultToFile}}
+\index{saveResultToFile@{saveResultToFile}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{saveResultToFile()}{saveResultToFile()}}
+{\footnotesize\ttfamily \label{main_8cpp_a227514abd820354c1832ab7673a5104a} 
+void save\+Result\+To\+File (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hyperlink{class_flight}{Flight}} $>$ \&}]{arr}{, }\item[{const string \&}]{filename}{, }\item[{const string \&}]{sort\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Сохранение отсортированного массива в файл 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Отсортированный массив \\
+\hline
+{\em filename} & Имя выходного файла \\
+\hline
+{\em sort\+Name} & Название алгоритма сортировки (для заголовка)\\
+\hline
+\end{DoxyParams}
+Файл открывается в режиме добавления (ios::\+app), поэтому результаты разных алгоритмов для одного размера собираются в одном файле. \Hypertarget{main_8cpp_a8e84937594274ed54e5814647f4a2120}\index{main.cpp@{main.cpp}!shakerSort@{shakerSort}}
+\index{shakerSort@{shakerSort}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{shakerSort()}{shakerSort()}}
+{\footnotesize\ttfamily \label{main_8cpp_a8e84937594274ed54e5814647f4a2120} 
+template$<$typename T$>$ \\
+void shaker\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ \&}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Шейкер-\/сортировка (Shaker sort) -\/ улучшенный вариант пузырька 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип элементов массива \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Сортируемый массив\\
+\hline
+\end{DoxyParams}
+Отличается от пузырька тем, что проходы выполняются в обе стороны:\+ сначала лёгкие элементы всплывают вверх, затем тяжёлые опускаются вниз.
+
+@complexity Время:\+ O(n²) в худшем случае @complexity Память:\+ O(1) дополнительной
+
+@stable Да @natural Да (лучше пузырька на почти отсортированных данных)
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{main_8cpp_af5b2865c7f3a2f1c3fad7b2244234e72}{bubble\+Sort} 
+\end{DoxySeeAlso}

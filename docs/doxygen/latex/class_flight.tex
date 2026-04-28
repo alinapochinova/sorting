@@ -1,0 +1,320 @@
+\doxysection{Flight Class Reference}
+\hypertarget{class_flight}{}\label{class_flight}\index{Flight@{Flight}}
+
+
+Класс, представляющий информацию об авиарейсе  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_flight_acbf1e8c321e01e04db2fe651a08b30af}{Flight}} ()
+\begin{DoxyCompactList}\small\item\em Конструктор по умолчанию \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_flight_af8005910917a9ca380e4b496d49b6288}{Flight}} (const string \&fn, const string \&al, const string \&date, const string \&time, int pass)
+\begin{DoxyCompactList}\small\item\em Конструктор с параметрами \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_flight_a60d2c1fa3b76e4b3fa11c1af6ebb51c1}{get\+Flight\+Number}} () const
+\item 
+string \doxymbox{\hyperlink{class_flight_adcc829ffb939411bcdf440c3882d3f44}{get\+Airline}} () const
+\item 
+string \doxymbox{\hyperlink{class_flight_a14581516693e0b3df243054a70b64ae6}{get\+Arrival\+Date}} () const
+\item 
+string \doxymbox{\hyperlink{class_flight_ad48a40d51eaa34279b8cce9fdf71ac73}{get\+Arrival\+Time}} () const
+\item 
+int \doxymbox{\hyperlink{class_flight_ac2c85b179a9d82109eda7d3475930b67}{get\+Passengers}} () const
+\item 
+bool \doxymbox{\hyperlink{class_flight_ad82772815c363fe2d48e87d90b8fa49d}{operator$<$}} (const \doxymbox{\hyperlink{class_flight}{Flight}} \&other) const
+\begin{DoxyCompactList}\small\item\em Оператор "{}меньше"{} для сортировки \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_flight_ae1fe52045bba8a5155003ebd54e8bde8}{operator$>$}} (const \doxymbox{\hyperlink{class_flight}{Flight}} \&other) const
+\begin{DoxyCompactList}\small\item\em Оператор "{}больше"{}. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_flight_ad19d53c683840e020486d1d9ecd74510}{to\+CSV}} () const
+\begin{DoxyCompactList}\small\item\em Преобразование в строку CSV (без заголовка). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \doxymbox{\hyperlink{class_flight_a3b431f52c3b654edeb8005d37e814f65}{flight\+Number}}
+\begin{DoxyCompactList}\small\item\em Номер рейса (например, SU1234). \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563}{airline}}
+\begin{DoxyCompactList}\small\item\em Название авиакомпании \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_flight_a51736d11309709571b7b36d3098decc0}{arrival\+Date}}
+\begin{DoxyCompactList}\small\item\em Дата прилета (YYYY-\/\+MM-\/\+DD). \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_flight_aea2382ce3c965bed37ed413f1ea345fc}{arrival\+Time}}
+\begin{DoxyCompactList}\small\item\em Время прилета (HH:\+\+MM:\+SS). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_flight_a6b5d9e37e61e1692f132be0a972802d6}{passengers}}
+\begin{DoxyCompactList}\small\item\em Число пассажиров на борту (0-\/300). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \doxymbox{\hyperlink{class_flight_abdfbd9ad1544145439a328621099b740}{operator$<$$<$}} (ostream \&os, const \doxymbox{\hyperlink{class_flight}{Flight}} \&f)
+\begin{DoxyCompactList}\small\item\em Оператор вывода в поток \end{DoxyCompactList}\item 
+istream \& \doxymbox{\hyperlink{class_flight_acebbed9c61ed3de6791991a4b55df47c}{operator$>$$>$}} (istream \&is, \doxymbox{\hyperlink{class_flight}{Flight}} \&f)
+\begin{DoxyCompactList}\small\item\em Оператор ввода из потока (чтение CSV). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий информацию об авиарейсе 
+
+Содержит все необходимые поля для описания рейса, а также перегруженные операторы сравнения для сортировки.
+
+\begin{DoxyInvariant}{Invariant}
+passengers \texorpdfstring{$>$}{>}= 0 (число пассажиров неотрицательное) 
+
+arrival\+Date в формате YYYY-\/\+MM-\/\+DD 
+
+arrival\+Time в формате HH:\+\+MM:\+SS 
+\end{DoxyInvariant}
+
+
+\label{doc-constructors}
+\Hypertarget{class_flight_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_flight_acbf1e8c321e01e04db2fe651a08b30af}\index{Flight@{Flight}!Flight@{Flight}}
+\index{Flight@{Flight}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{Flight()}{Flight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_flight_acbf1e8c321e01e04db2fe651a08b30af} 
+Flight::\+\+Flight (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор по умолчанию 
+
+Инициализирует все поля пустыми значениями \Hypertarget{class_flight_af8005910917a9ca380e4b496d49b6288}\index{Flight@{Flight}!Flight@{Flight}}
+\index{Flight@{Flight}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{Flight()}{Flight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_flight_af8005910917a9ca380e4b496d49b6288} 
+Flight::\+\+Flight (\begin{DoxyParamCaption}\item[{const string \&}]{fn}{, }\item[{const string \&}]{al}{, }\item[{const string \&}]{date}{, }\item[{const string \&}]{time}{, }\item[{int}]{pass}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор с параметрами 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fn} & Номер рейса \\
+\hline
+{\em al} & Название авиакомпании \\
+\hline
+{\em date} & Дата прилета (формат YYYY-\/\+MM-\/\+DD) \\
+\hline
+{\em time} & Время прилета (формат HH:\+\+MM:\+SS) \\
+\hline
+{\em pass} & Число пассажиров \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_flight_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_flight_adcc829ffb939411bcdf440c3882d3f44}\index{Flight@{Flight}!getAirline@{getAirline}}
+\index{getAirline@{getAirline}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getAirline()}{getAirline()}}
+{\footnotesize\ttfamily \label{class_flight_adcc829ffb939411bcdf440c3882d3f44} 
+string Flight::\+get\+Airline (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Название авиакомпании 
+\end{DoxyReturn}
+\Hypertarget{class_flight_a14581516693e0b3df243054a70b64ae6}\index{Flight@{Flight}!getArrivalDate@{getArrivalDate}}
+\index{getArrivalDate@{getArrivalDate}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getArrivalDate()}{getArrivalDate()}}
+{\footnotesize\ttfamily \label{class_flight_a14581516693e0b3df243054a70b64ae6} 
+string Flight::\+get\+Arrival\+Date (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Дата прилета 
+\end{DoxyReturn}
+\Hypertarget{class_flight_ad48a40d51eaa34279b8cce9fdf71ac73}\index{Flight@{Flight}!getArrivalTime@{getArrivalTime}}
+\index{getArrivalTime@{getArrivalTime}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getArrivalTime()}{getArrivalTime()}}
+{\footnotesize\ttfamily \label{class_flight_ad48a40d51eaa34279b8cce9fdf71ac73} 
+string Flight::\+get\+Arrival\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Время прилета 
+\end{DoxyReturn}
+\Hypertarget{class_flight_a60d2c1fa3b76e4b3fa11c1af6ebb51c1}\index{Flight@{Flight}!getFlightNumber@{getFlightNumber}}
+\index{getFlightNumber@{getFlightNumber}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getFlightNumber()}{getFlightNumber()}}
+{\footnotesize\ttfamily \label{class_flight_a60d2c1fa3b76e4b3fa11c1af6ebb51c1} 
+string Flight::\+get\+Flight\+Number (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Номер рейса 
+\end{DoxyReturn}
+\Hypertarget{class_flight_ac2c85b179a9d82109eda7d3475930b67}\index{Flight@{Flight}!getPassengers@{getPassengers}}
+\index{getPassengers@{getPassengers}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getPassengers()}{getPassengers()}}
+{\footnotesize\ttfamily \label{class_flight_ac2c85b179a9d82109eda7d3475930b67} 
+int Flight::\+get\+Passengers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Число пассажиров 
+\end{DoxyReturn}
+\Hypertarget{class_flight_ad82772815c363fe2d48e87d90b8fa49d}\index{Flight@{Flight}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{class_flight_ad82772815c363fe2d48e87d90b8fa49d} 
+bool Flight::\+operator$<$ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_flight}{Flight}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор "{}меньше"{} для сортировки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Объект для сравнения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если текущий объект должен идти раньше other
+\end{DoxyReturn}
+Правила сравнения (по приоритету):\+
+\begin{DoxyEnumerate}
+\item Сравнение по дате прилета
+\item При равенстве дат -\/ по времени прилета
+\item При равенстве времени -\/ по названию авиакомпании
+\item При равенстве авиакомпании -\/ по числу пассажиров (по убыванию!)
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+Число пассажиров сравнивается в обратном порядке (убывание), чтобы при сортировке по возрастанию рейсы с бОльшим числом пассажиров шли первыми. 
+\end{DoxyNote}
+\Hypertarget{class_flight_ae1fe52045bba8a5155003ebd54e8bde8}\index{Flight@{Flight}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily \label{class_flight_ae1fe52045bba8a5155003ebd54e8bde8} 
+bool Flight::\+operator$>$ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_flight}{Flight}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Оператор "{}больше"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Объект для сравнения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если текущий объект больше other 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Реализован через оператор \texorpdfstring{$<$}{<} 
+\end{DoxyNote}
+\Hypertarget{class_flight_ad19d53c683840e020486d1d9ecd74510}\index{Flight@{Flight}!toCSV@{toCSV}}
+\index{toCSV@{toCSV}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{toCSV()}{toCSV()}}
+{\footnotesize\ttfamily \label{class_flight_ad19d53c683840e020486d1d9ecd74510} 
+string Flight::\+to\+CSV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Преобразование в строку CSV (без заголовка). 
+
+\begin{DoxyReturn}{Returns}
+Строка вида "{}номер,компания,дата,время,пассажиры"{} 
+\end{DoxyReturn}
+
+
+\label{doc-related-members}
+\Hypertarget{class_flight_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_flight_abdfbd9ad1544145439a328621099b740}\index{Flight@{Flight}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_flight_abdfbd9ad1544145439a328621099b740} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_flight}{Flight}} \&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор вывода в поток 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Поток вывода \\
+\hline
+{\em f} & Объект \doxylink{class_flight}{Flight} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылка на поток для цепочечных операций 
+\end{DoxyReturn}
+\Hypertarget{class_flight_acebbed9c61ed3de6791991a4b55df47c}\index{Flight@{Flight}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily \label{class_flight_acebbed9c61ed3de6791991a4b55df47c} 
+istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{istream \&}]{is}{, }\item[{\doxymbox{\hyperlink{class_flight}{Flight}} \&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Оператор ввода из потока (чтение CSV). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Поток ввода \\
+\hline
+{\em f} & Объект \doxylink{class_flight}{Flight} для заполнения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылка на поток для цепочечных операций
+\end{DoxyReturn}
+Ожидает строку формата:\+ "{}номер,компания,дата,время,пассажиры"{} 
+
+\label{doc-variable-members}
+\Hypertarget{class_flight_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563}\index{Flight@{Flight}!airline@{airline}}
+\index{airline@{airline}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{airline}{airline}}
+{\footnotesize\ttfamily \label{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563} 
+string Flight::\+airline\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Название авиакомпании 
+
+\Hypertarget{class_flight_a51736d11309709571b7b36d3098decc0}\index{Flight@{Flight}!arrivalDate@{arrivalDate}}
+\index{arrivalDate@{arrivalDate}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{arrivalDate}{arrivalDate}}
+{\footnotesize\ttfamily \label{class_flight_a51736d11309709571b7b36d3098decc0} 
+string Flight::\+arrival\+Date\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Дата прилета (YYYY-\/\+MM-\/\+DD). 
+
+\Hypertarget{class_flight_aea2382ce3c965bed37ed413f1ea345fc}\index{Flight@{Flight}!arrivalTime@{arrivalTime}}
+\index{arrivalTime@{arrivalTime}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{arrivalTime}{arrivalTime}}
+{\footnotesize\ttfamily \label{class_flight_aea2382ce3c965bed37ed413f1ea345fc} 
+string Flight::\+arrival\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время прилета (HH:\+\+MM:\+SS). 
+
+\Hypertarget{class_flight_a3b431f52c3b654edeb8005d37e814f65}\index{Flight@{Flight}!flightNumber@{flightNumber}}
+\index{flightNumber@{flightNumber}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{flightNumber}{flightNumber}}
+{\footnotesize\ttfamily \label{class_flight_a3b431f52c3b654edeb8005d37e814f65} 
+string Flight::\+flight\+Number\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Номер рейса (например, SU1234). 
+
+\Hypertarget{class_flight_a6b5d9e37e61e1692f132be0a972802d6}\index{Flight@{Flight}!passengers@{passengers}}
+\index{passengers@{passengers}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{passengers}{passengers}}
+{\footnotesize\ttfamily \label{class_flight_a6b5d9e37e61e1692f132be0a972802d6} 
+int Flight::\+passengers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Число пассажиров на борту (0-\/300). 
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}

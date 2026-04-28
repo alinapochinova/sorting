@@ -1,0 +1,81 @@
+\chapter{Лабораторная работа:\+ Сравнение алгоритмов сортировки }
+\hypertarget{index}{}\label{index}\index{Лабораторная работа: Сравнение алгоритмов сортировки@{Лабораторная работа: Сравнение алгоритмов сортировки}}
+\hypertarget{index_author}{}\doxysection{\texorpdfstring{Автор}{Автор}}\label{index_author}
+ФИО:\+ Починова Алина Алексеевна Группа:\+ СКБ231 Вариант:\+ 21\hypertarget{index_repo}{}\doxysection{\texorpdfstring{Ссылка на исходный код}{Ссылка на исходный код}}\label{index_repo}
+Git\+Hub репозиторий:\+ \href{https://github.com/alinapochinova/sorting}{\texttt{https:\+/\+/\+github.\+com/\+alinapochinova/\+sorting}}\hypertarget{index_task}{}\doxysection{\texorpdfstring{Задание}{Задание}}\label{index_task}
+Реализовать и сравнить алгоритмы сортировки:\+
+\begin{DoxyItemize}
+\item Сортировка пузырьком (Bubble sort)
+\item Шейкер-\/сортировка (Shaker sort)
+\item Быстрая сортировка (Quick sort)
+\item Стандартная сортировка std::\+sort
+\end{DoxyItemize}
+
+Объект сортировки:\+ Авиарейсы (номер, авиакомпания, дата прилета, время прилета, число пассажиров) Сравнение по:\+ дата → время → авиакомпания → число пассажиров (по убыванию)\hypertarget{index_results}{}\doxysection{\texorpdfstring{Таблица времени выполнения (микросекунды)}{Таблица времени выполнения (микросекунды)}}\label{index_results}
+
+\begin{DoxyTable}{5}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Размер  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Bubble  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Shaker  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Quick  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}std::\+sort  \\
+100  &829  &357  &50  &61  \\
+500  &11466  &6798  &308  &1757  \\
+1000  &36279  &24792  &681  &478  \\
+5000  &596974  &530758  &3808  &5820  \\
+10000  &2507160  &1984311  &7750  &7006  \\
+20000  &9507980  &8041423  &13315  &14903  \\
+30000  &21811392  &18265228  &24309  &21105  \\
+50000  &61036144  &51655407  &36236  &35143  \\
+75000  &138588085  &122068333  &94687  &55282  \\
+100000  &246126707  &206496517  &70776  &65607  \\
+\end{DoxyTable}
+\hypertarget{index_graphs}{}\doxysection{\texorpdfstring{Графики}{Графики}}\label{index_graphs}
+
+
+{\bfseries{Пояснение к графику 1:\+}}
+\begin{DoxyItemize}
+\item Левый график показывает работу квадратичных алгоритмов (Bubble, Shaker) — время растёт очень быстро
+\item Правый график показывает работу быстрых алгоритмов (Quick, std::\+sort) — время растёт медленно
+\item Разница в скорости между левым и правым графиком достигает 1000+ раз на больших размерах
+\end{DoxyItemize}
+
+
+
+{\bfseries{Пояснение к графику 2:\+}}
+\begin{DoxyItemize}
+\item Логарифмическая шкала позволяет увидеть все алгоритмы на одном графике
+\item Bubble и Shaker имеют наклон 2 (соответствует O(n²))
+\item Quick и std::\+sort имеют наклон 1 (соответствует O(n log n))
+\end{DoxyItemize}\hypertarget{index_analysis}{}\doxysection{\texorpdfstring{Анализ результатов}{Анализ результатов}}\label{index_analysis}
+{\bfseries{Наблюдения:\+}}
+\begin{DoxyEnumerate}
+\item Bubble и Shaker демонстрируют квадратичный рост O(n²)
+\item Quick sort и std::\+sort показывают линейно-\/логарифмический рост O(n log n)
+\item std::\+sort на 5-\/15\% быстрее Quick sort на всех размерах
+\item На размере 100000 Bubble работает более 350 секунд, а std::\+sort — менее 0.\+1 секунды
+\end{DoxyEnumerate}\hypertarget{index_conclusions}{}\doxysection{\texorpdfstring{Выводы (какой метод когда применять)}{Выводы (какой метод когда применять)}}\label{index_conclusions}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Ситуация  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Рекомендуемый алгоритм  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Обоснование  \\
+Маленькие массивы (\texorpdfstring{$<$}{<} 1000)  &Bubble или Shaker  &Простота реализации, разница времени незначительна  \\
+Большие массивы (\texorpdfstring{$>$}{>} 10000)  &Quick sort или std::\+sort  &O(n log n) против O(n²) — разница в тысячи раз  \\
+Требуется устойчивая сортировка  &Bubble или Shaker  &Quick sort нестабилен  \\
+Данные почти отсортированы  &Shaker sort  &Естественное поведение (быстро завершается)  \\
+Производственный код  &std::\+sort  &Оптимизирован, гарантированная производительность  \\
+Образовательные цели  &Bubble sort  &Простейший для понимания алгоритм  \\
+\end{DoxyTable}
+
+
+{\bfseries{Общий вывод:\+}}
+\begin{DoxyItemize}
+\item Стандартная сортировка std::\+sort — лучший выбор для реальных задач
+\item Quick sort — хорошая альтернатива, если std::\+sort недоступен
+\item Пузырьковые алгоритмы (Bubble, Shaker) применимы только для обучения или очень маленьких массивов (\texorpdfstring{$<$}{<} 1000 элементов)
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_flight}{Flight} 
+
+\doxylink{main_8cpp_af5b2865c7f3a2f1c3fad7b2244234e72}{bubble\+Sort} 
+
+\doxylink{main_8cpp_a8e84937594274ed54e5814647f4a2120}{shaker\+Sort} 
+
+\doxylink{main_8cpp_ac96a86ae64c66b9973e38aee47538de4}{quick\+Sort} 
+\end{DoxySeeAlso}
