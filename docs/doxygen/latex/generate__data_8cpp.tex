@@ -11,7 +11,8 @@
 {\ttfamily \+\#include $<$vector$>$}\newline
 {\ttfamily \+\#include $<$random$>$}\newline
 {\ttfamily \+\#include $<$iomanip$>$}\newline
-{\ttfamily \+\#include $<$chrono$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$filesystem$>$}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,7 +65,7 @@ random\+\_\+device \doxymbox{\hyperlink{generate__data_8cpp_a5e7d225ba5a0794a047
 Создаёт CSV-\/файлы с информацией об авиарейсах для последующего тестирования алгоритмов сортировки.\hypertarget{generate__data_8cpp_usage}{}\doxysubsection{\texorpdfstring{Использование}{Использование}}\label{generate__data_8cpp_usage}
 Запустите программу без аргументов:\+ 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./generate\_data.exe}
+\DoxyCodeLine{./generate\_data}
 
 \end{DoxyCode}
 \hypertarget{generate__data_8cpp_output}{}\doxysubsection{\texorpdfstring{Выходные данные}{Выходные данные}}\label{generate__data_8cpp_output}
@@ -75,7 +76,7 @@ random\+\_\+device \doxymbox{\hyperlink{generate__data_8cpp_a5e7d225ba5a0794a047
 \end{DoxySeeAlso}
 
 
-\label{doc-func-members}
+\label{generate__data_8cpp_doc-func-members}
 \Hypertarget{generate__data_8cpp_doc-func-members}
 \doxysubsection{Function Documentation}
 \Hypertarget{generate__data_8cpp_a88673bfe22d2495f0c312abf54618eee}\index{generate\_data.cpp@{generate\_data.cpp}!gen@{gen}}
@@ -202,7 +203,7 @@ void save\+To\+CSV (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hy
 \end{DoxyParams}
 Создаёт файл с заголовком и данными. Если файл существует, перезаписывает его. 
 
-\label{doc-var-members}
+\label{generate__data_8cpp_doc-var-members}
 \Hypertarget{generate__data_8cpp_doc-var-members}
 \doxysubsection{Variable Documentation}
 \Hypertarget{generate__data_8cpp_a12f2f663fb70a3d552135a3fd08968f4}\index{generate\_data.cpp@{generate\_data.cpp}!AIRLINES@{AIRLINES}}

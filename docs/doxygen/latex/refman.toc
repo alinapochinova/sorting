@@ -75,3 +75,4 @@
 \contentsline {subsubsection}{\numberline {5.2.1.8}quickSortRecursive()}{27}{subsubsection.5.2.1.8}%
 \contentsline {subsubsection}{\numberline {5.2.1.9}saveResultToFile()}{27}{subsubsection.5.2.1.9}%
 \contentsline {subsubsection}{\numberline {5.2.1.10}shakerSort()}{28}{subsubsection.5.2.1.10}%
+\contentsline {chapter}{{\cyrillictext \CYRP \cyrr \cyre \cyrd \cyrm \cyre \cyrt \cyrn \cyrery \cyrishrt \ \cyru \cyrk \cyra \cyrz \cyra \cyrt \cyre \cyrl \cyrsftsn }}{29}{section*.10}%
