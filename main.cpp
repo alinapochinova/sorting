@@ -105,11 +105,11 @@ using namespace chrono;
  */
 class Flight {
 private:
-    string flightNumber;   ///< Номер рейса (например, SU1234)
-    string airline;        ///< Название авиакомпании
-    string arrivalDate;    ///< Дата прилета (YYYY-MM-DD)
-    string arrivalTime;    ///< Время прилета (HH:MM:SS)
-    int passengers;        ///< Число пассажиров на борту (0-300)
+    string flightNumber;   ///<  Номер рейса (например, SU1234)
+    string airline;        ///<  Название авиакомпании
+    string arrivalDate;    ///<  Дата прилета (YYYY-MM-DD)
+    string arrivalTime;    ///<  Время прилета (HH:MM:SS)
+    int passengers;        ///<  Число пассажиров на борту (0-300)
     
 public:
     /**
@@ -133,20 +133,6 @@ public:
         : flightNumber(fn), airline(al), arrivalDate(date), 
           arrivalTime(time), passengers(pass) {}
     
-    /** @return Номер рейса */
-    string getFlightNumber() const { return flightNumber; }
-    
-    /** @return Название авиакомпании */
-    string getAirline() const { return airline; }
-    
-    /** @return Дата прилета */
-    string getArrivalDate() const { return arrivalDate; }
-    
-    /** @return Время прилета */
-    string getArrivalTime() const { return arrivalTime; }
-    
-    /** @return Число пассажиров */
-    int getPassengers() const { return passengers; }
     
     /**
      * @brief Оператор "меньше" для сортировки
@@ -171,7 +157,7 @@ public:
             return arrivalTime < other.arrivalTime;
         if (airline != other.airline)
             return airline < other.airline;
-        return passengers > other.passengers; // по убыванию!
+        return passengers > other.passengers; 
     }
     
     /**
@@ -262,7 +248,7 @@ void bubbleSort(vector<T>& arr) {
                 swapped = true;
             }
         }
-        if (!swapped) break; // оптимизация: массив уже отсортирован
+        if (!swapped) break; 
     }
 }
 
@@ -294,7 +280,6 @@ void shakerSort(vector<T>& arr) {
     while (left < right && swapped) {
         swapped = false;
         
-        // Проход снизу вверх (лёгкие элементы всплывают)
         for (size_t i = right; i > left; i--) {
             if (arr[i - 1] > arr[i]) {
                 swap(arr[i - 1], arr[i]);
@@ -303,8 +288,7 @@ void shakerSort(vector<T>& arr) {
         }
         left++;
         
-        // Проход сверху вниз (тяжёлые элементы тонут)
-        for (size_t i = left; i <= right; i++) {
+        for (size_t i = left+1; i <= right; i++) {
             if (arr[i - 1] > arr[i]) {
                 swap(arr[i - 1], arr[i]);
                 swapped = true;
@@ -369,7 +353,7 @@ void quickSortRecursive(vector<T>& arr, int low, int high) {
  * @tparam T Тип элементов массива
  * @param arr Сортируемый массив
  * 
- * @details Реализует алгоритм "разделяй и властвуй":
+ * @details Реализует алгоритм:
  *          1. Выбирает опорный элемент
  *          2. Разбивает массив на две части
  *          3. Рекурсивно сортирует каждую часть
@@ -430,7 +414,7 @@ vector<Flight> loadFromCSV(const string& filename) {
     }
     
     string line;
-    getline(file, line); // пропускаем заголовок
+    getline(file, line); 
     
     Flight f;
     while (file >> f) {
@@ -459,8 +443,8 @@ void saveResultToFile(const vector<Flight>& arr, const string& filename, const s
         return;
     }
     
-    file << "=== " << sortName << " ===\n";
-    for (const auto& f : arr) {
+    file << sortName << "\n";
+    for (const Flight& f : arr) {
         file << f.toCSV() << "\n";
     }
     file << "\n";
@@ -484,9 +468,9 @@ void saveResultToFile(const vector<Flight>& arr, const string& filename, const s
  */
 
 template<typename SortFunc>
-long long measureTime(vector<Flight> arr, SortFunc sortFunc, 
+long long measureTime(const vector<Flight>& original, SortFunc sortFunc, 
                       const string& sortName, const string& resultFilename) {
-    
+    vector<Flight> arr = original;
     auto start = high_resolution_clock::now();
     sortFunc(arr);
     auto end = high_resolution_clock::now();
@@ -494,7 +478,7 @@ long long measureTime(vector<Flight> arr, SortFunc sortFunc,
     auto duration = duration_cast<microseconds>(end - start).count();
     
     if (!isSorted(arr)) {
-        cerr << "ОШИБКА: " << sortName << " не отсортировала массив!" << endl;
+        cerr << "Ошибка: " << sortName << " не отсортировала массив!" << endl;
     } else {
         cout << "  " << sortName << ": " << duration << " мкс (OK)" << endl;
         saveResultToFile(arr, resultFilename, sortName);
@@ -526,15 +510,19 @@ long long measureTime(vector<Flight> arr, SortFunc sortFunc,
  */
 
 int main() {
-    system("mkdir sorted_results 2> nul");
-
     vector<size_t> sizes = {100, 500, 1000, 5000, 10000, 20000, 30000, 50000, 75000, 100000};
-    
+
+    #ifdef _WIN32
+        system("if not exist sorted_results mkdir sorted_results");
+    #else
+        system("mkdir -p sorted_results");
+    #endif
+
     ofstream timingFile("timing_results.csv");
     timingFile << "Размер,Bubble,Shaker,Quick,std_sort\n";
     
     for (size_t size : sizes) {
-        cout << "\n--- Размер массива: " << size << " ---" << endl;
+        cout << "\nРазмер массива: " << size << endl;
         
         string filename = "data/flights_" + to_string(size) + ".csv";
         vector<Flight> original = loadFromCSV(filename);
@@ -552,33 +540,16 @@ int main() {
         clearFile << "Результаты сортировки для размера " << size << "\n";
         clearFile.close();
         
-        vector<Flight> arrBubble = original;
-        vector<Flight> arrShaker = original;
-        vector<Flight> arrQuick = original;
-        vector<Flight> arrStd = original;
+        long long timeBubble = measureTime(original, bubbleSort<Flight>, "Сортировка пузырьком (Bubble)", resultFilename);
+        long long timeShaker = measureTime(original, shakerSort<Flight>, "Шейкер-сортировка (Shaker)", resultFilename);
+        long long timeQuick = measureTime(original, quickSort<Flight>, "Быстрая сортировка (Quick)", resultFilename);
         
-        long long timeBubble = measureTime(arrBubble, bubbleSort<Flight>, 
-                                           "Сортировка пузырьком (Bubble)", resultFilename);
-        long long timeShaker = measureTime(arrShaker, shakerSort<Flight>, 
-                                           "Шейкер-сортировка (Shaker)", resultFilename);
-        long long timeQuick = measureTime(arrQuick, quickSort<Flight>, 
-                                          "Быстрая сортировка (Quick)", resultFilename);
-        
-        auto start = high_resolution_clock::now();
-        sort(arrStd.begin(), arrStd.end());
-        auto end = high_resolution_clock::now();
-        long long timeStd = duration_cast<microseconds>(end - start).count();
-        
-        if (isSorted(arrStd)) {
-            cout << "  std::sort: " << timeStd << " мкс (OK)" << endl;
-            saveResultToFile(arrStd, resultFilename, "std::sort");
-        }
+        auto stdSortWrapper = [](vector<Flight>& v) { sort(v.begin(), v.end()); };
+        long long timeStd = measureTime(original, stdSortWrapper, "std::sort", resultFilename);
         
         timingFile << size << "," << timeBubble << "," << timeShaker << "," 
                    << timeQuick << "," << timeStd << "\n";
     }
-    
     timingFile.close();
-       
     return 0;
 }
